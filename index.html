@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      width: 700px;
+      margin: auto;
+    }
+
+    img {
+      filter: blur(30px);
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" style="padding-top: 2000px;">
+    <img src="./10pximg.jpg" data-src="./pure-julia-9S5_Vr_BOss-unsplash.jpg" loading="lazy" alt="">
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut ullam, harum omnis sapiente repudiandae fuga
+      nostrum
+      explicabo amet consequatur illo totam nobis culpa animi est eum laudantium eveniet voluptatibus asperiores? Itaque
+      eius nam quas eos illum sapiente est culpa repellendus consequuntur, impedit inventore atque sint! Animi veniam
+      dolores, quis ea magni quos ducimus modi temporibus! Placeat quos vel odit mollitia, eum inventore perspiciatis
+      non
+      iure veritatis voluptatem quis alias similique nam nobis magnam. Laudantium repellat ab sint ipsam eveniet et
+      eligendi illum deserunt sequi voluptatem minima voluptate quasi quos obcaecati voluptates neque, error optio eius
+      accusantium iure fuga soluta numquam? Esse cumque molestias deserunt voluptatem ipsam, voluptas atque odio autem
+      laudantium est! Error iste optio velit officiis rem dolor deserunt ducimus totam sapiente illo earum molestias
+      magnam nobis modi, ipsum beatae, officia explicabo delectus placeat tempora expedita blanditiis sequi. Labore rem
+      officia itaque. Suscipit ducimus eligendi deleniti laborum fugit quam, esse architecto at ipsum nisi aspernatur
+      sequi dolorum vitae numquam debitis ad mollitia sapiente, accusantium magni quasi voluptatum voluptate soluta!
+      Officia aperiam esse veniam voluptatem placeat natus nobis. Distinctio veritatis, repudiandae corrupti veniam ad
+      blanditiis, molestiae neque nostrum dolores quod quis illo. Nobis quae ab suscipit architecto, ut consectetur
+      iure.
+    </p>
+
+    <img src="./10pximg.jpg" data-src="./tim-schmidbauer-tp9pY1LGkKo-unsplash.jpg" loading="lazy" alt="">
+
+  </div>
+
+  <script>
+    const imageEls = document.querySelectorAll('img');
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const imgEl = entry.target;
+        imgEl.src = imgEl.dataset.src;
+        imgEl.style.filter = 'none'
+        observer.unobserve(imgEl)
+      });
+    }, {
+      rootMargin: '-200px'
+    });
+
+
+    imageEls.forEach(imgEl => {
+      observer.observe(imgEl);
+    })
+  </script>
+</body>
+
+</html>
